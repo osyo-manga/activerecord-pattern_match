@@ -37,9 +37,22 @@ using ActiveRecord::PatternMatch
 
 user = User.create name: "homu", age: 14
 
-user in { name:, age: }
-p name
-p age
+user in { id:, name:, age:, created_at: }
+p id, name, age, created_at
+# => 1
+#    "homu"
+#    14
+#    2020-01-25 06:03:00.368396 UTC
+
+case user
+in age: (..10)
+  p "A"
+in age: (10..20)
+  p "B"
+in age: (20..)
+  p "C"
+end
+# => "B"
 ```
 
 ## Development
