@@ -12,7 +12,7 @@ module ActiveRecord
       # MEMO: respond_to? is defined ActiveRecord
       #       redefine respond_to? because it is not called in refinments
       def respond_to?(name, *args)
-        name == :deconstruct_keys ? true : super(name, *args)
+        name == :deconstruct_keys || super(name, *args)
       end
     end
   end
